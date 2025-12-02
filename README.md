@@ -29,6 +29,8 @@ This version includes both **frontend (React)** and **backend API** running loca
   - `/api/cart-items?expand=products`
 - Integrated with the frontend using **Axios**.
 - Sends product details, order details, timestamps, and quantities.
+- Runs on **Node + Express** with mock JSON-style data.
+- Used locally during development alongside the frontend.
 
 ---
 
@@ -63,15 +65,16 @@ This version includes both **frontend (React)** and **backend API** running loca
 - Fetching real backend data using Axios
 - Matching `productId` from URL with backend products
 - Structuring state to share data across pages
+- Debugging backend → frontend communication
 
 ### 🤖 AI-Assisted Development (Modern Coding Skill)
 Used AI as a **learning and debugging assistant**, NOT as a copy-paste tool:
-- Debugging backend → frontend issues
-- Fixing routing and state management problems
-- Understanding best React practices
-- Improving code architecture and project organization
+- Debugging backend → frontend issues  
+- Fixing routing and state management problems  
+- Understanding best React practices  
+- Improving code architecture and project organization  
 
-This reflects a modern workflow similar to what mid-level developers do.
+This reflects a modern workflow similar to how mid-level developers use AI.
 
 ---
 
@@ -87,13 +90,15 @@ This reflects a modern workflow similar to what mid-level developers do.
 
 ### Backend
 - Node.js
-- REST-style API endpoints
+- Express-style API endpoints
+- JSON mock database
 
 ---
 
 ## 🛠 How to Run Locally
 
-### 👉 Frontend (React + Vite)
+### 👉 1. Run the Frontend (React + Vite)
+
 ```bash
 cd your-frontend-folder
 npm install
