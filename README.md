@@ -3,7 +3,7 @@
 This project started as an assignment where I was given static HTML pages.  
 I rebuilt the entire project using **React (Vite)** with a clean component structure, dynamic routing, backend API integration, and real data rendering.
 
-This version includes both **frontend (React)** and **backend (Node API)** running locally and communicating together.
+This version includes both **frontend (React)** and **backend API** running locally and communicating together.
 
 ---
 
@@ -11,57 +11,67 @@ This version includes both **frontend (React)** and **backend (Node API)** runni
 
 ### 🎨 Frontend (React + Vite)
 - Converted **HTML → JSX** with reusable components.
-- Organized into a clean folder structure (`components`, `pages`, `utils`, etc.).
+- Organized into a clean folder structure.
 - Implemented **React Router** for:
-  - Home Page
-  - Checkout Page
-  - Orders Page
-  - Tracking Page
-- Used **URL query parameters** to track each product dynamically.
-- Implemented **conditional rendering** to prevent errors (image src, missing data, etc.)
-- Integrated **day.js** for beautiful date formatting.
-- Lifted state to `App.jsx` to share global data properly.
-- Displayed full product information dynamically (name, image, quantity, delivery date).
+  - Home Page  
+  - Checkout Page  
+  - Orders Page  
+  - Tracking Page  
+- Displayed product data dynamically using URL query parameters.
+- Integrated **day.js** for formatting backend timestamps.
+- Managed global state by lifting it into `App.jsx`.
+- Rendered product name, quantity, and image dynamically from backend data.
+- Prevented empty image warnings with conditional rendering.
 
-### 🖥 Backend (Node + API)
-- Local backend server provides:
+### 🖥 Backend (Node API)
+- Provides REST-style endpoints:
   - `/api/orders?expand=products`
   - `/api/cart-items?expand=products`
-  - product information  
-- Connected frontend to backend using **Axios**.
-- Rendered backend data on all pages (orders, tracking, quantities, dates).
-- Fully working **order tracking system** using real backend timestamps.
+- Integrated with the frontend using **Axios**.
+- Sends product details, order details, timestamps, and quantities.
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page  
+![Home Page](./screenshots/React.app.HomePage.PNG)
+
+### 🧾 Orders Page  
+![Orders Page](./screenshots/React.app.Orders.PNG)
+
+### 💳 Checkout Page  
+![Checkout Page](./screenshots/React.app.Checkout.PNG)
+
+### 🚚 Tracking Page  
+![Tracking Page](./screenshots/React.app.Tracking.PNG)
 
 ---
 
 ## 🧠 What I Learned
 
 ### 🔧 React Skills
-- Converting HTML to JSX components
-- React Router (navigation + dynamic params)
-- Lifting state and sharing data across pages
-- Handling async data and loading states
-- Working with nested API responses
-- Avoiding common React errors (empty states, rendering issues)
-- Building clean UI with reusable components
+- Converting static HTML into React components
+- React Router setup (navigation + dynamic params)
+- State management and lifting state into parent components
+- Working with nested backend JSON data
+- Preventing rendering errors (conditional rendering)
+- Using day.js to handle backend timestamps
 
 ### 🌐 Backend Integration
-- Running backend and frontend together in VS Code
-- Fetching API data with Axios
-- Matching backend product IDs to URL params
-- Debugging backend → frontend data flow
-- Rendering timestamps using day.js
+- Running backend + frontend together in VS Code
+- Fetching real backend data using Axios
+- Matching `productId` from URL with backend products
+- Structuring state to share data across pages
 
-### 🤖 AI-Assisted Development (Modern Skill)
-Used AI as a **coding partner**, not a copy/paste tool:
-- Debugging complex errors  
-- Improving architecture  
-- Fixing routing & state issues  
-- Understanding best practices  
-- Learning new npm packages  
-- Structuring components properly  
+### 🤖 AI-Assisted Development (Modern Coding Skill)
+Used AI as a **learning and debugging assistant**, NOT as a copy-paste tool:
+- Debugging backend → frontend issues
+- Fixing routing and state management problems
+- Understanding best React practices
+- Improving code architecture and project organization
 
-This reflects real-world workflow used by Mid/Senior developers.
+This reflects a modern workflow similar to what mid-level developers do.
 
 ---
 
@@ -72,22 +82,19 @@ This reflects real-world workflow used by Mid/Senior developers.
 - React Router
 - Axios
 - day.js
-- JavaScript (ES6)
-- CSS / JSX
+- JavaScript (ES6+)
+- CSS
 
 ### Backend
 - Node.js
 - REST-style API endpoints
-- JSON-based mock data
 
 ---
 
-## 🛠 How to Run the Project
+## 🛠 How to Run Locally
 
-### 👉 Install dependencies
-
-#### Frontend:
+### 👉 Frontend (React + Vite)
 ```bash
-cd frontend-folder-name
+cd your-frontend-folder
 npm install
 npm run dev
