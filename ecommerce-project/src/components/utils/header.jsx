@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import { useEffect } from "react";
 import { Link } from "react-router";
 
 export function Header({ checkouts, quantity, setQuantity }) {
 
   useEffect(() => {
-    if (checkouts === null) return;
+    if (!checkouts) return;
 
     if (checkouts.length === 0) {
       setQuantity(0);
@@ -26,8 +25,6 @@ export function Header({ checkouts, quantity, setQuantity }) {
     <div className="header">
       <div className="left-section">
         <Link to="/" className="header-link">
-
-          {/* 👇 Replace image logo with text */}
           <div
             style={{
               fontSize: "28px",
@@ -38,14 +35,13 @@ export function Header({ checkouts, quantity, setQuantity }) {
           >
             Abdou Artist
           </div>
-
         </Link>
       </div>
 
       <div className="middle-section">
         <input className="search-bar" type="text" placeholder="Search" />
         <button className="search-button">
-          <img className="search-icon" src="images/icons/search-icon.png" />
+          <img className="search-icon" src="/images/icons/search-icon.png" />
         </button>
       </div>
 
@@ -55,7 +51,7 @@ export function Header({ checkouts, quantity, setQuantity }) {
         </Link>
 
         <Link className="cart-link header-link" to="/cheackout">
-          <img className="cart-icon" src="images/icons/cart-icon.png" />
+          <img className="cart-icon" src="/images/icons/cart-icon.png" />
           <div className="cart-quantity">
             {quantity === null ? "" : quantity}
           </div>

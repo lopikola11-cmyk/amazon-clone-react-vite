@@ -10,7 +10,10 @@ export function SingleOrder({ quantity, setQuantity, checkouts }) {
 
   useEffect(() => {
     async function loadOrder() {
-      const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+      const response = await axios.get(
+  `https://amazon-backend-dkf4.onrender.com/api/orders/${orderId}?expand=products`
+);
+
       setOrder(response.data);
     }
     loadOrder();

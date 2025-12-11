@@ -11,10 +11,14 @@ export function ProductCard({product,getCheckouts}) {
     const [cardQua,setCardQua]=useState(1);
     
    async function addToCart() {
-    await axios.post('/api/cart-items', {
-      productId: product.id,
-      quantity: cardQua
-    });
+await axios.post(
+  'https://amazon-backend-dkf4.onrender.com/api/cart-items',
+  {
+    productId: product.id,
+    quantity: cardQua
+  }
+);
+
 
     getCheckouts();
   }

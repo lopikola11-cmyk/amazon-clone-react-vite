@@ -10,7 +10,10 @@ export function HomePage({checkouts,quantity,setQuantity,getCheckouts}) {
 
  const [productGrid,setProductGrid]=useState([]);
 
-  async function homePage(){  let response=await axios.get('api/products');
+  async function homePage(){  let response = await axios.get(
+  'https://amazon-backend-dkf4.onrender.com/api/products'
+);
+
 
     return setProductGrid(response.data)
   };

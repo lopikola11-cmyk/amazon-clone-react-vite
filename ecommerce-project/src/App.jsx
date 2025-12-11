@@ -1,11 +1,11 @@
-import './App.css'
-import axios from 'axios'
-import { Checkout } from './components/checkout.jsx'
-import { HomePage } from './components/HomePage.jsx'
-import { Order } from './components/orders.jsx'
-import { Routes, Route } from 'react-router'
-import { Traking } from './components/tracking.jsx'
-import { useEffect, useState } from 'react'
+import './App.css';
+import axios from 'axios';
+import { Checkout } from './components/checkout.jsx';
+import { HomePage } from './components/HomePage.jsx';
+import { Order } from './components/orders.jsx';
+import { Routes, Route } from 'react-router';
+import { Traking } from './components/tracking.jsx';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -13,8 +13,7 @@ function App() {
   const [checkouts, setCheckouts] = useState(null);
 
   async function getCheckouts() {
-    let response = await axios.get('/api/cart-items?expand=product');
-    console.log("Cart updated:", response.data); // DEBUG
+    let response = await axios.get('https://amazon-backend-dkf4.onrender.com/api/cart-items?expand=product');
     setCheckouts(response.data);
   }
 
@@ -25,6 +24,7 @@ function App() {
   return (
     <Routes>
 
+      {/* HOME PAGE */}
       <Route
         index
         element={
@@ -37,6 +37,7 @@ function App() {
         }
       />
 
+      {/* CHECKOUT PAGE */}
       <Route
         path="/cheackout"
         element={
@@ -47,6 +48,7 @@ function App() {
         }
       />
 
+      {/* ORDERS PAGE */}
       <Route
         path="/order"
         element={
@@ -54,13 +56,17 @@ function App() {
             checkouts={checkouts}
             quantity={quantity}
             setQuantity={setQuantity}
+            getCheckouts={getCheckouts}   // ⭐ IMPORTANT
           />
         }
       />
 
+      {/* TRACKING PAGE */}
       <Route
         path="/tracking/:orderId/:productId"
-        element={<Traking checkouts={checkouts} />}
+        element={
+          <Traking checkouts={checkouts} quantity={quantity} setQuantity={setQuantity} />
+        }
       />
 
     </Routes>

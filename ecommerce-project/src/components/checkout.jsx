@@ -18,7 +18,7 @@ export function Checkout({ checkouts, getCheckouts }) {
     if (!checkouts) return;
 
     async function loadSummary() {
-      let response = await axios.get('/api/payment-summary');
+      let response = await axios.get('https://amazon-backend-dkf4.onrender.com/api/payment-summary');
       setDelivery(response.data);
     }
 
@@ -27,12 +27,19 @@ export function Checkout({ checkouts, getCheckouts }) {
 
 
   async function updateDelivery(productId, optionId) {
-    await axios.put(`/api/cart-items/${productId}`, { deliveryOptionId: optionId });
+    await axios.put(
+  `https://amazon-backend-dkf4.onrender.com/api/cart-items/${productId}`,
+  { deliveryOptionId: optionId }
+);
+
     await getCheckouts();
   }
 
   async function deleteItem(productId) {
-    await axios.delete(`/api/cart-items/${productId}`);
+   await axios.delete(
+  `https://amazon-backend-dkf4.onrender.com/api/cart-items/${productId}`
+);
+
     await getCheckouts();
   }
 
@@ -44,7 +51,11 @@ export function Checkout({ checkouts, getCheckouts }) {
       return;
     }
 
-    await axios.put(`/api/cart-items/${productId}`, { quantity: qty });
+   await axios.put(
+  `https://amazon-backend-dkf4.onrender.com/api/cart-items/${productId}`,
+  { quantity: qty }
+);
+
 
     setEditingItemId(null);
     setNewQuantity("");
@@ -53,7 +64,10 @@ export function Checkout({ checkouts, getCheckouts }) {
   }
 
   async function placeOrder() {
-    let response = await axios.post("/api/orders");
+   let response = await axios.post(
+  "https://amazon-backend-dkf4.onrender.com/api/orders"
+);
+
     console.log("Order created:", response.data);
 
     await getCheckouts();
