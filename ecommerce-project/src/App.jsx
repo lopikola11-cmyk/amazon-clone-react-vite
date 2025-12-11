@@ -1,25 +1,25 @@
 import './App.css'
-import { useState, useEffect } from 'react'
-import axios from 'axios';
-
+import axios from 'axios'
 import { Checkout } from './components/checkout.jsx'
 import { HomePage } from './components/HomePage.jsx'
 import { Order } from './components/orders.jsx'
 import { Routes, Route } from 'react-router'
 import { Traking } from './components/tracking.jsx'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [checkouts, setCheckouts] = useState([]);
-  const [productGrid, setProductGrid] = useState([]);
-  const [orders, setOrders] = useState([]);
 
-  // 🔥 Load ALL orders here (not in Order.jsx)
+  const [quantity, setQuantity] = useState(null);
+  const [checkouts, setCheckouts] = useState(null);
+
+  async function getCheckouts() {
+    let response = await axios.get('/api/cart-items?expand=product');
+    console.log("Cart updated:", response.data); // DEBUG
+    setCheckouts(response.data);
+  }
+
   useEffect(() => {
-    async function loadOrders() {
-      const response = await axios.get('/api/orders?expand=products');
-      setOrders(response.data);
-    }
-    loadOrders();
+    getCheckouts();
   }, []);
 
   return (
@@ -27,22 +27,40 @@ function App() {
 
       <Route
         index
-        element={<HomePage productGrid={productGrid} setProductGrid={setProductGrid} />}
+        element={
+          <HomePage
+            checkouts={checkouts}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            getCheckouts={getCheckouts}
+          />
+        }
       />
 
       <Route
         path="/cheackout"
-        element={<Checkout checkouts={checkouts} setCheckouts={setCheckouts} />}
+        element={
+          <Checkout
+            checkouts={checkouts}
+            getCheckouts={getCheckouts}
+          />
+        }
       />
 
       <Route
         path="/order"
-        element={<Order orders={orders} />}
+        element={
+          <Order
+            checkouts={checkouts}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
+        }
       />
 
       <Route
-        path="/tracking"
-        element={<Traking orders={orders} />}
+        path="/tracking/:orderId/:productId"
+        element={<Traking checkouts={checkouts} />}
       />
 
     </Routes>

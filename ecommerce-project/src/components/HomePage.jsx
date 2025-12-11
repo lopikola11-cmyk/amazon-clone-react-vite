@@ -1,25 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import'../styles/pages/HomePage.css';
 import'../styles/shared/header.css';
 import { Header } from './utils/header';
-;
 import axios from 'axios';
+import { ProductCard } from './productCard';
+
+export function HomePage({checkouts,quantity,setQuantity,getCheckouts}) {
 
 
+ const [productGrid,setProductGrid]=useState([]);
 
-export function HomePage({productGrid,setProductGrid}) {
-
-
-
-
-useEffect( ()=>
- {     
   async function homePage(){  let response=await axios.get('api/products');
 
     return setProductGrid(response.data)
   };
-  homePage();
+ 
 
+useEffect( ()=>
+ {     
+ 
+  homePage();
 
 
 },[]
@@ -27,64 +27,23 @@ useEffect( ()=>
 )
 
 
-    return(    
+    return(   
+ 
     <> 
+ 
      <title>HomePage</title>
-   <Header/>
+   <Header checkouts={checkouts}   quantity={quantity} setQuantity={setQuantity} />
 
     <div className="home-page">
       <div className="products-grid">
-{productGrid.map(productGrid=>{ 
-  return ( 
-     <div key={productGrid.id} className="product-container">
-          <div className="product-image-container">
-            <img className="product-image"
-              src={productGrid.image} />
-          </div>
 
-          <div className="product-name limit-text-to-2-lines">
-         {productGrid.name}
-          </div>
 
-          <div className="product-rating-container">
-            <img className="product-rating-stars"
-              src={`images/ratings/rating-${productGrid.rating.stars*10}.png` }/>
-            <div className="product-rating-count link-primary">
-              {productGrid.rating.count}
-            </div>
-          </div>
+{productGrid.map(product =>{ 
 
-          <div className="product-price">
-            ${(productGrid.priceCents/100).toFixed(2)}
-          </div>
+ return <ProductCard  product={product} key={product.id} quantity={quantity} setQuantity={setQuantity} 
+ getCheckouts={getCheckouts}/>;
+ 
 
-          <div className="product-quantity-container">
-            <select>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-
-          <div className="product-spacer"></div>
-
-          <div className="added-to-cart">
-            <img src="images/icons/checkmark.png" />
-            Added
-          </div>
-
-          <button className="add-to-cart-button button-primary">
-            Add to Cart
-          </button>
-        </div>
-  )
 }) 
 
 }

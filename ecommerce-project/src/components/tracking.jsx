@@ -1,95 +1,53 @@
-import '../styles/pages/tracking.css';
-import '../styles/shared/header.css';
+import'../styles/pages/tracking.css';
+import'../styles/shared/header.css';
 import { Header } from './utils/header';
-import { Link } from 'react-router'; 
-import { useSearchParams } from 'react-router-dom';
-import dayjs from "dayjs";
+import { Link } from 'react-router';
 
-export function Traking({ orders }) {
 
-  // 1. Get productId from URL
-  const [searchParams] = useSearchParams();
-  const productId = searchParams.get("productId");
+export function Traking() {
+    
+    return ( 
+<>
+ <title>Tracking Page</title>
+   <Header/>
 
-  // ============================
-  // DEBUG LOGS TO FIND THE ISSUE (optional)
-  // ============================
-  console.log("🚀 Tracking Page Loaded");
-  console.log("URL productId =", productId);
-  console.log("orders prop =", orders);
+    <div className="tracking-page">
+      <div className="order-tracking">
+        <Link className="back-to-orders-link link-primary" to="/order">
+          View all orders
+        </Link>
 
-  // 2. Find the matching product inside orders
-  let foundProduct = null;
+        <div className="delivery-date">
+          Arriving on Monday, June 13
+        </div>
 
-  if (orders && productId) {
-    for (let order of orders) {
-      const match = order.products.find(p => p.productId === productId);
-      if (match) {
-        foundProduct = match;
-        break;
-      }
-    }
-  }
+        <div className="product-info">
+          Black and Gray Athletic Cotton Socks - 6 Pairs
+        </div>
 
-  console.log("foundProduct =", foundProduct);
+        <div className="product-info">
+          Quantity: 1
+        </div>
 
-  return (
-    <>
-      <title>Tracking Page</title>
-      <Header />
+        <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" />
 
-      <div className="tracking-page">
-        <div className="order-tracking">
-
-          {/* Back link */}
-          <Link className="back-to-orders-link link-primary" to="/order">
-            View all orders
-          </Link>
-
-          {/* CURRENT TIME (using dayjs) */}
-          <div className="current-time">
-            Current time: {dayjs().format("YYYY-MM-DD HH:mm:ss")}
+        <div className="progress-labels-container">
+          <div className="progress-label">
+            Preparing
           </div>
-
-          {/* Delivery date (using dayjs) */}
-          <div className="delivery-date">
-            {foundProduct
-              ? `Arriving on ${dayjs(foundProduct.estimatedDeliveryTimeMs).format("D MMMM YYYY")}`
-              : "Arriving soon"}
+          <div className="progress-label current-status">
+            Shipped
           </div>
-
-          {/* Product name */}
-          <div className="product-info">
-            {foundProduct ? foundProduct.product.name : "Product not found"}
+          <div className="progress-label">
+            Delivered
           </div>
+        </div>
 
-          {/* Quantity */}
-          <div className="product-info">
-            Quantity: {foundProduct ? foundProduct.quantity : "?"}
-          </div>
-
-          {/* Product image (render ONLY if found) */}
-          {foundProduct && (
-            <img
-              className="product-image"
-              src={foundProduct.product.image}
-              alt="product"
-            />
-          )}
-
-          {/* Status */}
-          <div className="progress-labels-container">
-            <div className="progress-label">Preparing</div>
-            <div className="progress-label current-status">Shipped</div>
-            <div className="progress-label">Delivered</div>
-          </div>
-
-          <div className="progress-bar-container">
-            <div className="progress-bar"></div>
-          </div>
-
+        <div className="progress-bar-container">
+          <div className="progress-bar"></div>
         </div>
       </div>
-    </>
-  );
+    </div>
+</>
+    )
 }
