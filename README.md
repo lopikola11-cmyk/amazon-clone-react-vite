@@ -1,50 +1,78 @@
 # 🛒 Amazon Clone — React + Vite + Node Backend API
 
-This project was originally built from static HTML pages. I rebuilt everything using **React (Vite)** for the frontend and Node.js for the backend. The application includes routing, dynamic rendering, backend data, real cart functionality, orders, and package tracking.
+This project was originally built from static HTML pages. I rebuilt everything using React (Vite) for the frontend.  
+The backend API was provided, but I learned how to run it locally, integrate it fully with my frontend, and deploy it in production using Render.
+
+The result is a complete full-stack Amazon-style shopping experience with cart management, orders, and tracking.
 
 ---
 
-## 🚀 Features
+# 🌐 Live Demo
 
-### Frontend (React + Vite)
-- Converted all static HTML pages into reusable JSX components  
-- Component-based architecture  
-- React Router navigation (Home, Checkout, Orders, Tracking)  
-- Dynamic tracking routes: `/tracking/:orderId/:productId`  
-- Axios for backend communication  
-- day.js for delivery date formatting  
-- Full cart system:
-  - Add to cart (POST)
-  - Update quantity (PUT)
-  - Delete item (DELETE)
-  - Select delivery option (PUT)
-- Auto-updating payment summary  
-- Global state lifted into App.jsx  
-- Dynamic rendering of nested JSON from backend  
-- No page reload — everything updates through React re-rendering  
+Frontend (Vercel):  
+https://amazon-clone-react-vite.vercel.app/
 
-### Orders System
-- Place Order button triggers:
-  - POST /api/orders  
-  - Backend empties the cart automatically  
-- Orders page displays:
-  - Product info  
-  - Quantity  
-  - Delivery date  
-  - Order totals  
-- Buy Again feature:
-  - Re-adds an order item to the cart  
-  - Redirects user to checkout  
-  - Cart updates instantly  
-
-### Tracking Page
-- Displays real tracking data based on URL parameters  
-- Correct product name, image, quantity, and delivery status  
-- Smooth navigation from order to tracking page  
+Backend API (Render):  
+https://amazon-backend-dkf4.onrender.com/api/products
 
 ---
 
-## 📸 Screenshots
+# 🚀 Features
+
+Frontend (React + Vite):
+- Converted static HTML into reusable React components
+- React Router navigation (Home, Checkout, Orders, Tracking)
+- Dynamic tracking routes: /tracking/:orderId/:productId
+- Axios for backend API requests
+- Full cart functionality: add, update, delete, choose delivery
+- Auto-updating payment summary
+- day.js for delivery date formatting
+- Smooth re-renders without page refresh
+
+Orders System:
+- Creating orders using POST /api/orders
+- Backend automatically empties the cart
+- Orders page shows products, quantities, delivery dates, totals
+- “Buy Again” function re-adds products to cart
+
+Tracking System:
+- URL params determine product + order tracking data
+- Displays tracking status, product image, quantity, etc.
+
+---
+
+# 🧠 What I Learned
+
+React:
+- JSX components
+- Props and state lifting
+- React Router with dynamic routes
+- Conditional rendering
+- Async data fetching with Axios
+- Debugging and error handling
+- DOM diffing and re-render behavior
+
+Backend Integration:
+- Performing CRUD operations with Axios
+- Understanding REST API structure
+- Keeping UI synchronized with backend state
+- Structuring async request flows
+- Reading nested API data
+
+Deployment Skills:
+- Deploying frontend on Vercel
+- Deploying backend API on Render
+- Connecting frontend ↔ backend using API URLs
+- Fixing deployment errors (CORS, 404s, routing)
+- Debugging Render logs and Vercel builds
+- Fixing Git merge conflicts
+
+Important Note:  
+I did not create the backend myself, but I learned how to run it in VS Code, integrate it completely into my frontend, and deploy it successfully.
+
+---
+
+# 📸 Screenshots
 
 Home Page  
 ![Home Page](./screenshots/React.app.HomePage.PNG)
@@ -60,91 +88,42 @@ Tracking Page
 
 ---
 
-## 🧠 What I Learned
-
-### React
-- JSX component structure  
-- Props, state lifting, and rendering flows  
-- React Router (with dynamic parameters)  
-- How React re-renders components without page reload  
-- How React diffs and selectively updates the DOM  
-- Handling async backend data safely  
-- Conditional rendering  
-- Formatting timestamps with day.js  
-
-### Backend Integration
-- Full CRUD operations using Axios  
-- Understanding REST API routes:
-  - POST / PUT / DELETE / GET  
-- Keeping frontend UI synchronized with backend state  
-- Debugging API errors and request flows  
-- Using URL parameters to fetch specific data  
-
-### AI-Assisted Development
-- Problem-solving  
-- Architectural improvements  
-- Clean code structure  
-- Learning professional patterns  
-- Accelerating development while understanding the underlying concepts  
-
----
-
-## 📦 Technologies Used
-
-Frontend:  
-React (Vite), React Router, Axios, day.js, JavaScript (ES6), CSS  
-
-Backend:  
-Node.js, Express-style routing, JSON mock database  
-
----
-
 # 🛠 How to Run Locally
 
-## Start the Frontend
+Start the Frontend:
+cd frontend  
+npm install  
+npm run dev  
+Runs at: http://localhost:5173/
 
-cd frontend
-npm install
-npm run dev
+Start the Backend:
+cd backend  
+npm install  
+npm run dev  
+Runs at: http://localhost:3000/
 
-
-App runs at:  
-http://localhost:5173/
-
----
-
-## Start the Backend
-
-cd backend
-npm install
-npm run dev
-
-Backend runs at:  
-http://localhost:3000/
-
-Useful endpoints:  
+Useful API Endpoints:
+http://localhost:3000/api/products  
 http://localhost:3000/api/orders?expand=products  
 http://localhost:3000/api/cart-items?expand=product  
 
-> Frontend must be connected to backend for data to appear.
+Frontend must be connected to backend for data to appear.
 
 ---
 
-## 📌 Project Status
-Complete and functional.
+# 📌 Project Status
+Complete and fully functional.
 
-Future improvements:
-- Authentication system  
-- Persistent database  
-- Deployment (frontend + backend)  
-- Better UI design  
-- Search & filter system  
+Future Improvements:
+- Authentication (JWT / OAuth)
+- Real database (PostgreSQL / MongoDB)
+- Better UI/UX design
+- Product search & filtering
+- Checkout with Stripe
+- Pagination & sorting
 
 ---
 
-## 👤 Author
-
-**Zerouali Abderrahmane (@lopikola11-cmyk)**  
-React Developer • Building Real Projects
-
-
+# 👤 Author
+Zerouali Abderrahmane (@lopikola11-cmyk)  
+Frontend React Developer • Building Real Projects
