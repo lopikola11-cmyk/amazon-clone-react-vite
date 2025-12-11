@@ -1,131 +1,150 @@
 # 🛒 Amazon Clone — React + Vite + Node Backend API
 
-This project was originally built from static HTML pages. I rebuilt everything using React (Vite) for the frontend and Node.js for the backend. The application includes routing, dynamic rendering, backend data, and product tracking.
+This project was originally built from static HTML pages. I rebuilt everything using **React (Vite)** for the frontend and Node.js for the backend. The application includes routing, dynamic rendering, backend data, real cart functionality, orders, and package tracking.
+
+---
 
 ## 🚀 Features
 
 ### Frontend (React + Vite)
-- Converted all pages from static HTML into JSX components
-- Component-based architecture
-- React Router navigation (Home, Checkout, Orders, Tracking)
-- URL query parameters to track products
-- Axios for backend requests
-- day.js for formatting dates
-- Global state lifted into App.jsx
-- Dynamic product rendering
-- Conditional rendering to prevent UI errors
+- Converted all static HTML pages into reusable JSX components  
+- Component-based architecture  
+- React Router navigation (Home, Checkout, Orders, Tracking)  
+- Dynamic tracking routes: `/tracking/:orderId/:productId`  
+- Axios for backend communication  
+- day.js for delivery date formatting  
+- Full cart system:
+  - Add to cart (POST)
+  - Update quantity (PUT)
+  - Delete item (DELETE)
+  - Select delivery option (PUT)
+- Auto-updating payment summary  
+- Global state lifted into App.jsx  
+- Dynamic rendering of nested JSON from backend  
+- No page reload — everything updates through React re-rendering  
 
-### Backend (Node API)
-The backend provides product and order data used by the frontend.
+### Orders System
+- Place Order button triggers:
+  - POST /api/orders  
+  - Backend empties the cart automatically  
+- Orders page displays:
+  - Product info  
+  - Quantity  
+  - Delivery date  
+  - Order totals  
+- Buy Again feature:
+  - Re-adds an order item to the cart  
+  - Redirects user to checkout  
+  - Cart updates instantly  
 
-API Endpoints:
-GET /api/orders?expand=products
-GET /api/cart-items?expand=products
+### Tracking Page
+- Displays real tracking data based on URL parameters  
+- Correct product name, image, quantity, and delivery status  
+- Smooth navigation from order to tracking page  
 
-The backend returns:
-- Product names
-- Product images
-- Prices
-- Quantities
-- Delivery dates
-- Nested product objects
-
-The frontend depends on the backend to load data.
+---
 
 ## 📸 Screenshots
 
-Home Page
+Home Page  
 ![Home Page](./screenshots/React.app.HomePage.PNG)
 
-
-
-
-Orders Page
+Orders Page  
 ![Orders Page](./screenshots/React.app.Orders.PNG)
 
-
-
-
-Checkout Page
+Checkout Page  
 ![Checkout Page](./screenshots/React.app.Checkout.PNG)
 
-
-
-
-
-Tracking Page
+Tracking Page  
 ![Tracking Page](./screenshots/React.app.Tracking.PNG)
 
-
-
-
+---
 
 ## 🧠 What I Learned
 
 ### React
-- JSX conversion
-- Component structure
-- React Router
-- State lifting
-- Rendering nested JSON
-- Conditional UI rendering
-- Formatting timestamps with day.js
+- JSX component structure  
+- Props, state lifting, and rendering flows  
+- React Router (with dynamic parameters)  
+- How React re-renders components without page reload  
+- How React diffs and selectively updates the DOM  
+- Handling async backend data safely  
+- Conditional rendering  
+- Formatting timestamps with day.js  
 
 ### Backend Integration
-- Running backend and frontend together
-- Debugging Axios requests
-- Using URL query parameters
-- Rendering backend data dynamically
+- Full CRUD operations using Axios  
+- Understanding REST API routes:
+  - POST / PUT / DELETE / GET  
+- Keeping frontend UI synchronized with backend state  
+- Debugging API errors and request flows  
+- Using URL parameters to fetch specific data  
 
-### AI Assistance
-- Debugging routing
-- Fixing backend to frontend issues
-- Improving architecture
-- Learning best React patterns
+### AI-Assisted Development
+- Problem-solving  
+- Architectural improvements  
+- Clean code structure  
+- Learning professional patterns  
+- Accelerating development while understanding the underlying concepts  
+
+---
 
 ## 📦 Technologies Used
 
-Frontend:
-React (Vite), React Router, Axios, day.js, JavaScript (ES6), CSS
+Frontend:  
+React (Vite), React Router, Axios, day.js, JavaScript (ES6), CSS  
 
-Backend:
-Node.js, Express-style routing, JSON mock data
+Backend:  
+Node.js, Express-style routing, JSON mock database  
+
+---
 
 # 🛠 How to Run Locally
 
 ## Start the Frontend
+
 cd frontend
 npm install
 npm run dev
 
-Runs at:
+
+App runs at:  
 http://localhost:5173/
 
+---
+
 ## Start the Backend
+
 cd backend
 npm install
 npm run dev
 
-Or:
-node server.js
-
-Runs at:
+Backend runs at:  
 http://localhost:3000/
 
-API Endpoints:
-http://localhost:3000/api/orders?expand=products
-http://localhost:3000/api/cart-items?expand=products
+Useful endpoints:  
+http://localhost:3000/api/orders?expand=products  
+http://localhost:3000/api/cart-items?expand=product  
 
-The frontend will not load real data unless the backend is running.
+> Frontend must be connected to backend for data to appear.
+
+---
 
 ## 📌 Project Status
-In progress.
-Planned improvements:
-- Full REST API
-- Deploy backend
-- Deploy frontend
-- Connect deployed backend to frontend
+Complete and functional.
+
+Future improvements:
+- Authentication system  
+- Persistent database  
+- Deployment (frontend + backend)  
+- Better UI design  
+- Search & filter system  
+
+---
 
 ## 👤 Author
-Ali Alpha (@lopikola11-cmyk)
+
+**Zerouali Abderrahmane (@lopikola11-cmyk)**  
 React Developer • Building Real Projects
+
+
