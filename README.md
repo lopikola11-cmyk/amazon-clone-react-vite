@@ -37,14 +37,28 @@ The frontend depends on the backend to load data.
 Home Page
 ![Home Page](./screenshots/React.app.HomePage.PNG)
 
+
+
+
 Orders Page
 ![Orders Page](./screenshots/React.app.Orders.PNG)
+
+
+
 
 Checkout Page
 ![Checkout Page](./screenshots/React.app.Checkout.PNG)
 
+
+
+
+
 Tracking Page
 ![Tracking Page](./screenshots/React.app.Tracking.PNG)
+
+
+
+
 
 ## 🧠 What I Learned
 
