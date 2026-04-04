@@ -1,6 +1,6 @@
 # 🛒 Amazon Clone — React + Vite + Node Backend API
 
-This project was originally built from static HTML pages. I rebuilt everything using React (Vite) for the frontend and Node.js for the backend. The application includes routing, dynamic rendering, backend data, and product tracking.
+This project was originally built from static HTML pages. I rebuilt everything using React (Vite) for the frontend and i have used Node.js code from somone  for the backend. The application includes routing, dynamic rendering, backend data, and product tracking.
 
 ## 🚀 Features
 
